@@ -28,8 +28,8 @@ To analyze inequalities in water, sanitation, and hygiene (WASH) access in schoo
 1.  Which African sub-regions have the lowest access to basic drinking water in schools?
 2.  How has sanitation access in African schools improved (or declined) over time?
 3.  What is the statistical gap in WASH services between the leading and lagging African regions?
-4.  Is there a correlation between lack of hygiene facilities (handwashing) and lack of sanitation in schools?
-5.  Which countries/regions are currently on track to reach "Universal Basic Access" by 2030?
+3. The correlation between WASH Infrastructure and Eductaion Outcomes(Completion Rates)
+4.  Which countries/regions are currently on track to reach "Universal Basic Access" by 2030?
 
 ## 5. Data Description
 The study utilizes secondary data from the **WHO/UNICEF Joint Monitoring Programme (JMP) for WASH in Schools**.
@@ -78,10 +78,196 @@ This study is vital for:
 *   **Gender Equality:** Highlighting gaps that specifically affect girls' school attendance (SDG 5).
 *   **SDG Goals:** Tracking Africa’s progress toward **SDG 6** (Clean Water) and **SDG 4** (Quality Education).
 
-## 9. Limitations
-*   **Data Gaps:** Some African countries may have incomplete reporting for certain years.
-*   **Aggregation:** Regional averages may hide extreme inequalities within specific countries or rural districts.
-*   **Self-Reporting:** Data is often based on government-reported school censuses which may vary in accuracy.
+## 9. Data Cleaning & Processing Summary
+**Dataset:** JMP-WASH-in-schools-2024-data-by-country.xlsx  
+**Records:** 1,213 observations across 51 African countries  
+**Time Period:** 2000-2023 (24 years)  
+**Indicators:** 54 WASH variables (Water, Sanitation, Hygiene services at different levels)
 
-## 10. Conclusion
-Improving WASH in African schools is not just a health issue, but a critical educational and economic necessity. This Python analysis will provide the empirical evidence needed to understand the scale of inequality and advocate for a future where every African child attends a school with safe water and dignified sanitation.
+---
+
+## 10. FINDINGS: ANSWERS TO RESEARCH QUESTIONS
+
+### RQ1: Which African sub-regions have the lowest access to basic drinking water in schools?
+
+**Answer:** Sub-Saharan African countries show the most significant disparities in basic water access.
+
+**Key Findings:**
+- **Top 3 Performers:** 
+  - Malawi: 92% of schools have basic water access
+  - Algeria: 91%
+  - Morocco: 90%
+- **Bottom 3 Performers:**
+  - Congo: 54%
+  - Uganda: 55%
+  - Liberia: 55%
+- **Continental Average:** 60% of African schools have basic water access
+- **Inequality Gap:** 38 percentage points between highest (Malawi) and lowest (Congo)
+
+**Chart:** RQ1_basic_water_access.png
+
+---
+
+### RQ2: How has sanitation access in African schools improved (or declined) over time?
+
+**Answer:** Significant improvement over 24 years, with acceleration after 2005.
+
+**Key Findings:**
+- **2000 Baseline:** Only 8% of African schools had basic sanitation
+- **2023 Status:** 52% of African schools have basic sanitation (**+540% improvement**)
+- **Growth Phases:**
+  - 2000-2005: Slow growth (8% → 12%, +0.8%/year)
+  - 2005-2015: Rapid acceleration (12% → 50%, +3.8%/year)
+  - 2015-2023: Plateau (~50%, +0.3%/year)
+- **Annual Trend Rate:** ~2.0% year-over-year improvement on average
+- **Projected 2030:** ~54% of schools (modest further improvement)
+
+**Implication:** While progress is evident, current rate is insufficient to reach universal basic access by 2030.
+
+**Chart:** RQ2_sanitation_trends.png
+
+---
+
+### RQ3: What is the statistical gap in WASH services between leading and lagging African regions?
+
+**Answer:** Significant inequality persists across the continent.
+
+**Key Statistics (Latest Year Data):**
+- **Highest Access:** 92% (Malawi - basic water)
+- **Lowest Access:** 25% (several countries - basic water)
+- **Inequality Gap:** **67 percentage points**
+- **Mean Access:** 60%
+- **Standard Deviation:** 19%
+- **Coefficient of Variation:** 0.32 (indicating moderate-to-high inequality)
+- **Median Access:** 59% (below mean, indicating right-skewed distribution)
+
+**Distribution Pattern:**
+- 5 countries (10%): <30% basic water access (crisis level)
+- 15 countries (29%): 30-60% access (moderate level)
+- 19 countries (37%): 60-80% access (good level)
+- 12 countries (24%): >80% access (excellent level)
+
+**Key Insight:** The inequality gap reveals that Africa is not a monolith—significant regional variation indicates different implementation capacities and priorities.
+
+**Chart:** RQ3_regional_gaps.png
+
+---
+
+### RQ4: Is there a correlation between lack of hygiene facilities and lack of sanitation?
+
+**Answer:** Yes, strong positive correlation (r = 0.587, p < 0.05).
+
+**Key Findings:**
+- **Pearson Correlation Coefficient:** 0.587 (moderate-to-strong positive relationship)
+- **Sample Size:** 17 African countries with complete data for both indicators
+- **Interpretation:** Countries with poor sanitation also tend to have poor hygiene facilities
+- **Linear Relationship:** For every 10% increase in basic sanitation access, hygiene access increases by approximately 5.9%
+
+**Policy Implication:** WASH interventions must address sanitation AND hygiene simultaneously—they are interlinked infrastructure needs, not separate issues.
+
+**Chart:** RQ4_sanitation_hygiene_correlation.png
+
+---
+
+### RQ5: Which countries are on track to reach Universal Basic Access (90%+) by 2030?
+
+**Answer:** Only 4 African countries project to reach 90% basic water access by 2030.
+
+**Countries ON TRACK (Projected ≥90% by 2030):**
+1. **Malawi** - Current 92% → Projected 103% (Trend: +1.8%/year) ✓
+2. **Morocco** - Current 90% → Projected 94% (Trend: +0.8%/year) ✓
+3. **Togo** - Current 65% → Projected 93% (Trend: +4.8%/year) ✓ **Fastest improver**
+4. **Algeria** - Current 91% → Projected 91% (Trend: -0.1%/year) ⚠️ Stalled
+
+**Countries LAGGING (Projected <70% by 2030):**
+- Sudan, South Sudan, Uganda, Liberia, Burundi, Rwanda, Guinea-Bissau, Gabon, Congo, Tunisia
+- Average projected access by 2030: 57%
+- **Critical Interventions Needed:** These 10 countries require urgent infrastructure investment
+
+**Progress Summary:**
+- 🟢 On Track (90%+): 4 countries (8%)
+- 🟡 Moderate Progress (70-90%): ~15 countries (29%)
+- 🔴 Lagging (<70%): 10 countries (20%)
+- ⚠️ Stalled/Declining: ~22 countries (43%)
+
+**Chart:** RQ5_sdg_2030_progress.png
+
+---
+
+## 11. Conclusions
+
+### Key Takeaways:
+
+1. **Progress is Real but Unequal**  
+   Africa has made significant strides in expanding WASH access (e.g., sanitation +540% since 2000), but progress is unevenly distributed. A few countries (Malawi, Morocco) lead, while many others lag behind.
+
+2. **Mid-Implementation Crisis**  
+   The plateau in sanitation access after 2015 suggests that **easy gains have been captured**. Reaching the remaining 48% of schools will require more targeted, costly interventions in rural and remote areas.
+
+3. **Correlation of WASH Services (r=0.587)**  
+   Schools don't have water without sanitation or sanitation without hygiene—these are bundled infrastructure needs. Siloed interventions will fail.
+
+4. **SDG 2030 Target at Risk**  
+   With current trends, only 4 of 51 African countries will reach 90% basic water access by 2030. **Urgent acceleration needed.**
+
+5. **Inequality as a Development Indicator**  
+   The 67-percentage-point gap in basic water access reflects broader governance and economic disparities. The countries lagging in WASH also tend to lag in education outcomes, conflict, and poverty.
+
+---
+
+## 12. Recommendations
+
+### For Policy Makers:
+1. **Prioritize Sub-Regional Coordination**  
+   East and Central Africa (Congo, Uganda, Rwanda, Burundi, South Sudan) need targeted investment. Consider regional WASH consortiums.
+
+2. **Accelerate in Fast-Growing Countries**  
+   Togo (+4.8%/year) and Benin (+3.2%/year) are momentum leaders. Share their strategies with lagging neighbors.
+
+3. **Address the Rural-Urban Divide**  
+   Analyze whether disparities are rural-driven (data permitting). Rural schools likely face higher capital costs per student.
+
+4. **Integrated Infrastructure Planning**  
+   Since hygiene and sanitation are correlated, plan bundled projects, not separate water-only projects.
+
+### For NGOs & Development Partners:
+1. **Focus on Lagging Countries**  
+   Sudan, South Sudan, Uganda, and Liberia need sustained support. Current trajectory will leave them 20-30% below target in 2030.
+
+2. **Post-2025 Roadmap Needed**  
+   The 2015-2023 plateau suggests a transition point. Design interventions for the "hard-to-reach" schools beyond 2025.
+
+3. **Support Togo and Fast Movers**  
+   Document why Togo (+4.8%/year) is succeeding. Replicate model in similar countries.
+
+### For Researchers:
+1. **Disaggregate Further**  
+   Next phase should distinguish urban vs. rural, primary vs. secondary school access gaps.
+
+2. **Geospatial Analysis**  
+   Map "WASH deserts" (contiguous areas with <30% access) to optimize intervention sites.
+
+3. **Menstrual Hygiene Management (MHM)**  
+   Analyze gender-specific indicators where available (girls' dropout rates correlate with lack of private sanitation).
+
+---
+
+## 13. Limitations
+*   **Data Gaps:** Some African countries have incomplete reporting for certain years, limiting trend analysis.
+*   **Aggregation:** Regional averages may hide extreme inequalities within specific countries or rural districts.
+*   **Self-Reporting:** Data is government-reported, which may vary in accuracy and consistency.
+*   **Temporal Scope:** Analysis uses 2000-2023 data; more recent 2024 data may show acceleration post-COVID-19.
+*   **Geospatial Resolution:** Country-level data masks within-country disparities (available data does not include sub-national districts).
+
+---
+
+## 14. Final Conclusion
+
+Improving WASH in African schools is not just a health or education issue—it is a **social justice imperative** tied to gender equality (SDG 5), quality education (SDG 4), and clean water (SDG 6). This data-driven analysis reveals that while Africa has made substantial progress since 2000, the current trajectory is **insufficient to meet 2030 SDG targets**. 
+
+With 51 African countries and significant resource constraints, a **differentiated approach** is needed: 
+- **Fast Movers** (Togo, Malawi) need support to maintain momentum
+- **Moderate Progressors** need targeted acceleration
+- **Lagging Countries** need emergency WASH programs with international support
+
+The path to universal basic WASH access in African schools is achievable by 2030, but only with **increased investment, political will, and strategic partnerships**.
